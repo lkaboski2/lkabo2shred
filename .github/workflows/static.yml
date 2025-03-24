@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fitness Survey</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+                  url('https://images.unsplash.com/photo-1605296867304-46d5465a13f1?auto=format&fit=crop&w=1350&q=80') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .container {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 30px 20px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+      width: 90%;
+      max-width: 500px;
+      color: #fff;
+    }
+    h2 {
+      margin-bottom: 20px;
+      text-align: center;
+      font-size: 1.8rem;
+    }
+    .form-step {
+      display: none;
+    }
+    .form-step.active {
+      display: block;
+    }
+    .form-group {
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 1rem;
+    }
+    input, select {
+      width: 100%;
+      padding: 12px;
+      border-radius: 10px;
+      border: none;
+      font-size: 1rem;
+      background-color: rgba(255, 255, 255, 0.2);
+      color: #fff;
+    }
+    input::placeholder, select option {
+      color: #ddd;
+    }
+    select {
+      appearance: none;
+    }
+    button {
+      width: 100%;
+      padding: 12px;
+      border-radius: 10px;
+      background-color: #00ff99;
+      border: none;
+      color: #000;
+      font-size: 1.1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    button:hover {
+      background-color: #00cc7a;
+    }
+    .final-message {
+      text-align: center;
+      font-size: 1.2rem;
+    }
+    @media screen and (max-width: 600px) {
+      .container {
+        padding: 20px 15px;
+      }
+      h2 {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="form-step active" id="step1">
+      <h2>Enter Your Info</h2>
+      <div class="form-group">
+        <label for="fname">First Name</label>
+        <input type="text" id="fname" placeholder="John" required />
+      </div>
+      <div class="form-group">
+        <label for="lname">Last Name</label>
+        <input type="text" id="lname" placeholder="Doe" required />
+      </div>
+      <div class="form-group">
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" placeholder="123-456-7890" required />
+      </div>
+      <div class="form-group">
+        <label for="instagram">Instagram Username</label>
+        <input type="text" id="instagram" placeholder="@yourhandle" required />
+      </div>
+      <button onclick="nextStep(2)">Next</button>
+    </div>
+
+    <div class="form-step" id="step2">
+      <h2>Survey</h2>
+      <div class="form-group">
+        <label>1. How experienced are you with training?</label>
+        <select id="q1">
+          <option value="A">A. Less than 6 months</option>
+          <option value="B">B. Between 6 months - a year</option>
+          <option value="C">C. Over a year</option>
+          <option value="D">D. No experience lifting</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>2. How many days a week can you train for?</label>
+        <select id="q2">
+          <option value="A">A. 1-2</option>
+          <option value="B">B. 2-3</option>
+          <option value="C">C. 3-4</option>
+          <option value="D">D. 4+</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>3. Do you have access to a gym or a place with equipment?</label>
+        <select id="q3">
+          <option value="A">A. Yes</option>
+          <option value="B">B. No</option>
+        </select>
+      </div>
+      <button onclick="nextStep(3)">Submit</button>
+    </div>
+
+    <div class="form-step" id="step3">
+      <h2 class="final-message">You're almost done!</h2>
+      <p class="final-message">Please send a DM to <strong>@logankaboski</strong> on Instagram saying <strong>'CHANGE'</strong>.</p>
+    </div>
+  </div>
+
+  <script>
+    function nextStep(step) {
+      document.querySelectorAll('.form-step').forEach(el => el.classList.remove('active'));
+      document.getElementById(`step${step}`).classList.add('active');
+    }
+  </script>
+</body>
+</html>
